@@ -208,20 +208,23 @@ color: #bec9de;
 /*BTN HERO*/ 
 
 .btn-pastel-central {
-  position: absolute;
+  transform-origin: center center;      /* eje de crecimiento en el centro */
   font-size: 1.5rem;
   padding: 2rem 8rem;
   background-color: var(--texto);
   color: white;
   border-radius: 10px;
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: 
+    transform 0.8s ease-out,           /* solo animás la escala */
+    box-shadow 0.4s ease-out,           /* y el box-shadow si lo tenés */
+    background-color 0.4s ease-out;     /* opcional, si cambias color */
   display: inline-block;
 }
 .btn-pastel-central:hover {
   background-color: #94d1a3;
   color: rgba(27, 38, 59, 0.678);
-  transform: scale(1.12);
+  transform: scale(1.22);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.267);
   font-weight: 700;
 }
@@ -429,6 +432,8 @@ color: #bec9de;
   flex-direction: column;
   justify-content: center;
   background: transparent;
+  
+  text-align: left;
 }
 .resultado-texto h3 {
   font-size: 2rem;
@@ -897,8 +902,15 @@ color: #bec9de;
   margin: 0;
 }
 
-span {
-  font-weight: 700;
+  .footer-copy a {
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+.footer-copy a:hover {
+  color: var(--verde-pastel);
+  text-decoration: underline;
 }
 
 /* Icono flotante WhatsApp */
@@ -1170,6 +1182,21 @@ span {
     padding-left: 0 !important;
   }
 
+  /*IMAGENES METRICAS EN RESULTADOS REALES 800x800*/
+.resultado-imagen {
+  flex: 1;
+  min-height: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  overflow: hidden;
+  /* No hover scaling here */
+}
+.resultado-imagen.imagen2 {
+  background-image: url("metrica2.png");
+  min-height: 100px;
+}
+
   /* Grid de testimonios a 1 columna */
   .testimonial-grid {
     padding: 0 1rem !important;
@@ -1198,6 +1225,36 @@ span {
     cursor: pointer;
     user-select: none;
   }
+
+  /*NUESTRO EQUIPO*/
+  .equipo__titulo {
+  position: relative;
+  z-index: 2;
+  font-size: 2rem;
+  font-family: 'Bricolage Grotesque 36';
+  background: transparent; /* bloque oscuro detrás del título */
+  margin: 2rem;
+  width: 280px;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #a9d6bb;
+  border: 2px solid #fafafa;
+  box-shadow: 1px 2px 10px rgba(255, 255, 255, 0.61);
+}
+
+.equipo__titulo1 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Bricolage Grotesque 36';
+  font-size: 2rem;
+  background: transparent; /* bloque oscuro detrás del título */
+  margin-top: 4.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  color: #a9d6bb;
+  border: 2px solid #fafafa;
+  box-shadow: 1px 2px 10px rgba(255, 255, 255, 0.61);
+}
 
   .faqs h2 {
     font-size: 2.2rem;
@@ -1267,5 +1324,16 @@ span {
   .footer-copy {
     order: 3;              /* al final */
   }
+
+  .footer-copy a {
+  color: var(--texto);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+.footer-copy a:hover {
+  color: var(--verde-pastel);
+  text-decoration: underline;
+}
 }
 

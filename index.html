@@ -21,6 +21,9 @@
   href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" 
   rel="stylesheet"
 />
+<link rel="preload" as="style"
+      href="https://fonts.googleapis.com/css2?family=Aldrich&display=swap"
+      onload="this.rel='stylesheet'">
 
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -41,12 +44,17 @@
           <img src="logonuevo.png" alt="ConectAds Logo" />
         </a>
       </div>
-        <button class="nav-toggle" aria-label="Abrir Menú">☰</button>          
+        <button class="nav-toggle"
+        aria-label="Abrir menú"
+        aria-controls="navLinks"
+        aria-expanded="false">
+  <i class="fa-solid fa-bars" aria-hidden="true"></i>
+</button>        
       <ul class="nav-links">
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#resultados">Resultados</a></li>
-        <li><a href="#Quienes somos">Quienes somos</a></li>
+        <li><a href="#equipo">Quienes somos</a></li>
         <li><a href="#faqs">FAQs</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
@@ -140,7 +148,7 @@
 <section id="resultados" class="resultados">
   <!-- Solo el header dentro de container -->
   <div class="container">
-    <h2>Resultados de nuestro clientes</h2>
+    <h2>Resultados de nuestros clientes</h2>
   </div>
 
 
@@ -343,6 +351,28 @@
           <h4>- Alejandro Cott, Antiguedades Cott</h4>
         </div>
       </div>
+
+      <div class="testimonial-rect">
+        <div class="testimonial-logo">
+          <img src="donado.jpeg" alt="Heladerias Donado">
+        </div>
+        <div class="testimonial-content">  
+          <p>Gracias a la estrategia, logramos profesionalizar nuestra captación de inversores. Tamara no solo maneja Google Ads, sino que entiende la lógica del negocio: nos ayudó a filtrar contactos interesados en abrir nuevas franquicias, optimizando nuestra inversión y acelerando nuestro crecimiento nacional. Recomendable 100%.</p>
+          <span class="read-more">Mostrar más +</span>
+          <h4>- Emanuel Fascia, Heladerias Donado</h4>
+        </div>
+      </div>
+
+      <div class="testimonial-rect">
+        <div class="testimonial-logo-moreto">
+          <img src="moreto.jpeg" alt="Taller Moreto">
+        </div>
+        <div class="testimonial-content">  
+          <p>Empezamos con Tamara desde el primer día que abrimos las puertas. Gracias a sus campañas de Google Ads, logramos llenar la agenda en tiempo récord. No solo nos trajo clientes, sino que nos ayudó a crecer y consolidarnos en el barrio cuando más lo necesitábamos. Es la pieza fundamental de nuestro crecimiento.</p>
+          <span class="read-more">Mostrar más +</span>
+          <h4>- Jorge, Taller Moreto</h4>
+        </div>
+      </div>
     </div>
   </div>
   </section>
@@ -353,11 +383,25 @@
     <!-- Lado Izquierdo: WhatsApp -->
     <div class="contacto-whatsapp">
       <h2>Contacto</h2>
-      <p>¿Listo para llevar tu negocio al siguiente nivel con estrategias esfectivas?</p>
-      <p class="p2">¡Tu primera consulta es gratuita! Contactame por WhatsApp!</p>
+      <p>¿Listo para llevar tu negocio al siguiente nivel con estrategias efectivas?</p>
+      <p class="p2">¡Tu primera consulta es gratuita! Contactame por WhatsApp o Llamada directa!</p>
       <div class="btn-contacto">
-        <a href="https://wa.me/+5491164397147" target="_blank" class="btn-pastel-wp">¡WhatsApp!</a>
-      </div>
+  <a href="https://wa.me/5491164397147"
+     target="_blank" rel="noopener"
+     class="btn-pastel-wp">
+    <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    WhatsApp
+  </a>
+
+  <a href="tel:+5491164397147"
+     class="btn-pastel-call"
+     aria-label="Llamar por teléfono">
+    <i class="fa-solid fa-phone" aria-hidden="true"></i>
+    Llamar
+  </a>
+</div>
+
+
     </div>
     <!-- Lado Derecho: Formulario -->
     <div class="contacto-form-container">
@@ -399,7 +443,7 @@
 
       <p class="footer-copy">
         &copy; 2025 ConectAds - Todos los derechos reservados -     
-        <a href="https://wa.me/5491124677663?text=¡Hola!%20Quiero%20informarme%20sobre%20sus%20servicios%20de%20diseño%20web." target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/5491164397147?text=¡Hola!%20Quiero%20informarme%20sobre%20sus%20servicios%20de%20diseño%20web." target="_blank" rel="noopener noreferrer">
           Diseño web ConectAds
         </a>
       </p>
@@ -407,8 +451,11 @@
   </div>
 </footer>
 
-<a href="https://wa.me/+5491164397147" class="whatsapp-float" target="_blank" aria-label="WhatsApp">
-  <i class="fab fa-whatsapp"></i>
+<!-- WhatsApp flotante (GLOBAL) -->
+<a class="wa-float" href="https://wa.me/5491164397147?text=Hola%20quiero%20vender%20antig%C3%BCedades"
+   target="_blank" rel="noopener" aria-label="Hablar por WhatsApp">
+  <img src="whatsapp.png" alt="WhatsApp">
+  <span class="wa-tooltip">Hablános acá -></span>
 </a>
 
 <!--Efecto de aparición para la sección "sobre mí"-->
@@ -453,7 +500,7 @@
     const nav    = document.querySelector('nav');
     const toggle = document.querySelector('.nav-toggle');
     const links  = document.querySelector('.nav-links');
-  
+  }
     // 2) abrir/cerrar menú hamburguesa
     toggle.addEventListener('click', () => {
   console.log('toggle clickeado', links.classList.toString());

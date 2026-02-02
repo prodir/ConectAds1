@@ -285,6 +285,32 @@ color: #bec9de;
     filter 0.2s ease,
     box-shadow 0.2s ease;
 }
+/* Para que el botón quede al final de la tarjeta */
+.service-card{
+  display: flex;
+  flex-direction: column;
+}
+
+.service-card .btn-info{
+  margin-top: 1rem;
+  align-self: center;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: .6rem 1.1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: .05rem;
+
+  background: var(--texto);
+  color: #fff;
+
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
 
 .service-card.visible {
   opacity: 1;
@@ -351,7 +377,7 @@ color: #bec9de;
 }
 
 .resultado-horizontal:hover {
-  transform: scale(1.07) !important;
+  transform: scale(1.01) !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
 }
@@ -360,7 +386,7 @@ color: #bec9de;
 }
 
 .resultado-horizontal.invertida:hover {
-  transform: scale(1.07) !important;
+  transform: scale(1.01) !important;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   border-radius: 1rem;
 }
@@ -401,21 +427,31 @@ color: #bec9de;
 }
 
 /* Imagen de la tarjeta */
-.resultado-imagen {
+.resultado-imagen{
   flex: 1;
-  min-height: 370px;
-  background-size: cover;
+  background-size: cover;      /* 👈 NO recorta */
   background-repeat: no-repeat;
   background-position: center;
-  overflow: hidden;
-  /* No hover scaling here */
+  background-color: #fff;        /* para que no se vea “vacío” */
+  min-height: 260px;             /* ajustá a gusto */
+    padding: 10px;
+  box-sizing: border-box;
+  background-clip: content-box;
 }
+/* La invertida: mantiene la imagen completa (sin recorte) */
+.resultado-horizontal.invertida .resultado-imagen{
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+}
+
+
 .resultado-imagen.imagen1 {
   background-image: url("metrica1.png");
 }
 .resultado-imagen.imagen2 {
   background-image: url("metrica2.png");
-  min-height: 300px;
 }
 
 .resultado-imagen.imagen3 {
@@ -819,7 +855,8 @@ font-size: 1.1rem;
   border-radius: 6px;
   text-decoration: none;
   letter-spacing: 0.1rem;
-
+  font-size: 1rem;
+  font-weight: 600;
   background-color: var(--azul-pastel);
   color: var(--texto);
 }

@@ -903,7 +903,7 @@ font-size: 1.1rem;
   margin-bottom: 2rem;
   color: #737373;
   font-size: 1.3rem;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  text-shadow: .5px .5px 6px rgba(0, 0, 0, 0.288);
 }
 
 
@@ -1174,9 +1174,9 @@ font-size: 1.1rem;
 @media (max-width: 768px) {
  /* ========== NAV ========== */
   nav{
-    height: 70px;
+    height: 82px;
     position: relative;
-    padding: 0;
+    padding: 0 0.6rem;
   }
 
   nav .container{
@@ -1190,15 +1190,19 @@ font-size: 1.1rem;
   }
 
   nav .logo{
+   transform: none !important;          /* 👈 mata el scale(4.5) del desktop */
+    transform-origin: left center;
+    padding: .25rem .2rem;
     margin: 0 !important;
-    padding-left: .4rem;
     display: flex;
     align-items: center;
   }
 
   nav .logo img{
-    height: 48px !important; /* 👈 10rem es demasiado */
+    height: 178px !important; /* 👈 10rem es demasiado */
     width: auto;
+    object-fit: contain;
+    display: block;
   }
 
   .nav-toggle{
@@ -1268,6 +1272,9 @@ font-size: 1.1rem;
     background: rgba(47,88,110,0.10);
     transform: translateX(2px);
   }
+
+
+  /*--------------------------HERO V2----------------------------*/
   .hero-v2{
     padding: 0;
     border-radius: 18px;
@@ -1275,19 +1282,23 @@ font-size: 1.1rem;
   }
 
   .hero-v2 .hero-central{
-    padding: 2.2rem 1.2rem 2.4rem;
+    padding: 5.2rem 3rem 1.4rem;
     gap: 1.1rem;
+
   }
 
   .hero-v2 .hero-texto h1{
     font-size: clamp(1.95rem, 7vw, 2.35rem);
     line-height: 1.08;
+
   }
+
 
   .hero-v2 a.btn-pastel-central,
   .hero-v2 a.btn-pastel-central:visited{
     width: 100%;
     max-width: 320px;
+    
   }
 
   .hero-v2 .hero-svg img{

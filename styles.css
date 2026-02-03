@@ -112,126 +112,115 @@ color: #bec9de;
 }
 
 /* HERO */
-.hero-img {
+/* ================= HERO V2 (ESTABLE) ================= */
+.hero-v2{
   position: relative;
-  width: 100%;
-  min-height: calc(100% - 77px);
+  min-height: calc(78svh - 77px);
+  overflow: hidden;
   background: url(img0tamy.png) center/cover no-repeat;
-  padding: 2rem 2rem 8rem;
+  border-radius: 16px;
+  padding: 3.2rem 1.4rem;
+}
+
+.hero-v2 .hero-overlay{
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: rgba(255,255,255,0);
+}
+
+/* Desktop / grande: 2 columnas */
+.hero-v2 .hero-central{
+  position: relative;
+  z-index: 1;
+
+  width: min(1800px, 100%);
+  margin: 0 auto;
+
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: clamp(1rem, 4vw, 4rem);
+
+    min-height: auto;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
   box-sizing: border-box;
 }
 
-.hero-full-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+/* Texto */
+.hero-v2 .hero-texto{
+  max-width: 900px;
+  margin: 0;                 /* 🔥 chau margin-left */
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.35);
 }
 
-.hero-overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.0);
-  display: block;
-  z-index: 1;
-}
-
-/* Flex entre texto y SVG, contenedor relativo para el botón */
-.hero-central {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start; /* ← aquí */
-  width: 100%;
-  min-height: calc(77vh - 33px);
-  padding: 2rem;
-}
-
-
-/* Texto: 45% ancho, alineado a la izquierda */
-.hero-texto {
-  flex: 2 1 auto;
-  max-width: 60%;
-  align-self: flex-start;
-  opacity: 0;
-  transform: translateY(70px);
-  transition: all 2s ease-out;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-
-}
-.hero-texto.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.hero-texto h1 {
+.hero-v2 .hero-texto h1{
+  margin: 0 0 1rem 0;
   color: #1b263b;
-  font-size: 4rem;
-  line-height: 1.2;  /* antes estaba demasiado grande */
-  margin-left: 1.3rem;
+  font-size: clamp(2.4rem, 4.2vw, 4rem);
+  line-height: 1.12;
 }
 
-.hero-texto p {
-  font-size: 1.8rem;
-  font-weight: 400;
+.hero-v2 .hero-texto p{
+  margin: 0 0 1.4rem 0;
+  font-size: clamp(1rem, 1.6vw, 1.5rem);
   color: #737373;
-  margin-left: 1.3rem;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-.hero-svg {
-  flex: 0 0 auto;
-  max-width: 35%;
-  width: auto;
-  align-self: flex-end;
-  transform: none;
-}
-.hero-svg img {
-  max-width: 60%;
-  animation: respirar 5s ease-in-out infinite;
-  filter:
-    /* sombra pequeña, más definida */
-    drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.4))
-    /* sombra grande y difusa */
-    drop-shadow(0px 8px 16px rgba(0, 0, 0, 0.2));
-}
- 
-/*BTN HERO*/ 
-
-.btn-pastel-central {
-  transform-origin: center center;      /* eje de crecimiento en el centro */
-  font-size: 1.5rem;
-  padding: 2rem 8rem;
+/* Botón */
+.hero-v2 a.btn-pastel-central,
+.hero-v2 a.btn-pastel-central:visited{
   background-color: var(--texto);
-  color: white;
-  border-radius: 10px;
+  color: #fff;
   text-decoration: none;
-  transition: 
-    transform 0.8s ease-out,           /* solo animás la escala */
-    box-shadow 0.4s ease-out,           /* y el box-shadow si lo tenés */
-    background-color 0.4s ease-out;     /* opcional, si cambias color */
-  display: inline-block;
+
+  padding: .9rem 1.6rem;
+  border-radius: 12px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
 }
-.btn-pastel-central:hover {
+
+.hero-v2 a.btn-pastel-central:hover{
   background-color: #94d1a3;
-  color: rgba(27, 38, 59, 0.678);
-  transform: scale(1.22);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.267);
+  color: rgba(27, 38, 59, 0.78);
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
   font-weight: 700;
 }
-.btn-pastel-central.visible {
-  opacity: 1;
-  transform: translateY(0);
+
+/* Planeta: sin absolute */
+.hero-v2 .hero-svg{
+  justify-self: end;
+  width: 100%;
+  pointer-events: none;
 }
 
-@keyframes respirar {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.25);
-  }
+.hero-v2 .hero-svg img{
+  width: min(720px, 42vw);
+  max-width: 100%;
+  height: auto;
+  display: block;
+
+  opacity: 0.95;
+  animation: respirar 6s ease-in-out infinite;
+  filter:
+    drop-shadow(0px 10px 25px rgba(0, 0, 0, 0.18))
+    drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.12));
 }
+
+@keyframes respirar{
+  0%,100%{ transform: scale(1); }
+  50%{ transform: scale(1.08); }
+}
+
+
+
+
 
 /* Servicios */
 .services {
@@ -1127,191 +1116,185 @@ font-size: 1.1rem;
 
 
 
-@media (max-width: 1400px) {
-  .hero-texto {
-    /* ej.: darle más ancho al h1 */
-    flex: 0 0 60%;
-    max-width: 60%;
+@media (max-width: 1200px){
+.hero-v2 .hero-central{
+    margin: 0;                 /* saca el margin: 4rem del desktop */
+    min-height: auto;
+    padding: 2.8rem 2rem 2.2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
   }
-  .hero-svg {
-    /* reducir un poco el planeta */
-    flex: 0 0 40%;
-    max-width: 40%;
-    margin-top: 4rem;
+
+  .hero-v2 .hero-texto{
+    margin-left: 0;            /* saca el margin-left: 4rem */
+    max-width: 780px;
+    text-align: center;
   }
-  
-  .hero-texto h1 {
-    font-size: 3.5rem;
-    letter-spacing: 0.2rem;
-    margin-bottom: 1.5rem;
+
+  .hero-v2 .hero-texto h1{
+    font-size: clamp(2.1rem, 4vw, 3.2rem);
+    line-height: 1.1;
   }
-  /*BTN HERO*/ 
-.btn-pastel-central {
-  position: absolute;
-  left: 3.2rem;
-}
-.btn-pastel-central {
-  font-size: 1.3rem;
-  padding: 1.5rem;
-  background-color: var(--texto);
-  color: white;
-  border-radius: 10px;
-  text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
-}
-.btn.pastel:hover {
-  background-color: #94d1a3;
-  color: rgba(27, 38, 59, 0.678);
-  transform: scale(1.12);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.267);
-  font-weight: 700;
-}
-.btn-pastel-central.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+
+  .hero-v2 .hero-texto p{
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .hero-v2 a.btn-pastel-central,
+  .hero-v2 a.btn-pastel-central:visited{
+    margin: 0 auto;
+    font-size: 1rem;
+    padding: .85rem 1.35rem;
+  }
+
+  /* ✅ Planeta: SIN absolute, va SOLO abajo y se adapta */
+  .hero-v2 .hero-svg{
+    position: static;          /* apaga el absolute del desktop */
+    transform: none;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+  }
+
+  .hero-v2 .hero-svg img{
+    width: clamp(320px, 55vw, 520px); /* tamaño “tablet” */
+    max-width: 100%;                 /* no lo limites a 80% */
+    height: auto;
+    opacity: 0.92;
+  }
 }
 
+
+
 @media (max-width: 768px) {
-      /* Mostrar hamburguesa, ocultar links */
-  nav {
-    height: 6rem;
+ /* ========== NAV ========== */
+  nav{
+    height: 70px;
     position: relative;
     padding: 0;
   }
-  nav .logo {
-    transform: none !important;
-    max-height: 6rem;
-    height: auto;
-    margin-left: 0 !important;
-    padding-left: 0.5rem;       /* un poco de espacio si lo necesitas */
-    order: 1;
-  }
-  nav .logo img {
-    height: 10rem !important;    /* puedes probar también 30px o 40px */
-    width: auto;
-  }
-  .nav-toggle {
-    display: block;
-    position: absolute;
-    top: 2rem;                 /* 50% de la altura del nav */
-    right: 1rem;              /* a 1rem del borde derecho */
-    background: none;
-    border: none;
-    font-size: 1.6rem;
-    cursor: pointer;
-    order: 3;
-  }
-  nav .container {
+
+  nav .container{
     padding: 0 1rem;
     width: 100%;
     max-width: 100%;
     height: 100%;
-    flex-wrap: wrap;     /* permite filas múltiples */
+    display: flex;
     align-items: center;
-
+    justify-content: space-between;
   }
-  .nav-links {
-    display: none !important;
-    position: absolute;
-    top: 100%;
-    right: 0;
+
+  nav .logo{
+    margin: 0 !important;
+    padding-left: .4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  nav .logo img{
+    height: 48px !important; /* 👈 10rem es demasiado */
     width: auto;
-    max-width: calc(100% - 2rem);
-    box-sizing: border-box;
-    width: calc(100% - 2rem);     /* deja 1rem de margen a cada lado */
-    flex-direction: column;
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 1rem;
-  }
-  .nav-links.open {
-    display: flex !important;
-  }
-  .nav-links li {
-    margin: 0.5rem 0;
-  }
-  .nav-links a {
-    display: block;
-    width: 100%;
-  }
-  .logo-group {
-    flex: 0 0 100%;      /* ocupa toda la fila */
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* o center si prefieres centrado */
-    gap: 0.2rem;
   }
 
-  .hero-img {
-    background-image: url('heronew.png');
-    /* La centras */
-    background-position: center center;
-    /* No se repita */
-    background-repeat: no-repeat;
-    /* Se escala para cubrir el área completa */
-    background-size: cover;
-    /* Asegúrate de tener altura mínima bien definida */
-    min-height: 300px; /* o el alto que necesites en móvil */
-  }
-  .hero-central {
-    display: flex;
-    flex-direction: column;
+  .nav-toggle{
+    display: inline-flex;
     align-items: center;
-    max-width: 100%;
-    width: 100%;
-    }
-  .hero-texto {
-    flex: none;
-    flex: 0 0 auto;
-    max-width: 100%;
-    flex-basis: 100%; 
-    text-align: center;
-    opacity: 1;
-    transform: none;
-    }
+    justify-content: center;
 
-/* Reset de hero-overlay para que no añada scroll */
-  .hero-overlay {
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 100%;
-    }
-/* Texto: tamaños más razonables y line-heights ajustados */
-  .hero-texto h1 {
-    font-size: 2.5rem;
-    margin: 0.5rem auto 1rem; /* quita cualquier margin-left, y usa margin auto para centrar */
-    padding: 0 1rem;
-    letter-spacing: 0;
-    text-align: left;
+    width: 44px;
+    height: 44px;
+
+    position: relative; /* ya no hace falta absolute */
+    top: auto;
+    right: auto;
+
+    background: rgba(255,255,255,0.85);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+
+    font-size: 1.4rem;
+    cursor: pointer;
   }
-  .hero-texto p {
-    font-size: 1rem;
-    font-weight: bold;
-    text-align: left;
+
+  /* Panel del menú */
+  .nav-links{
+    display: none !important;
+
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 1rem;
+    right: 1rem;
+
+    padding: .9rem;
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    backdrop-filter: blur(10px);
   }
-  .hero-svg {
-    position: relative;
-    transform: none;
-    max-width: 80%;
-    flex-basis: 80%; 
-    margin: 1rem auto 0;
-    text-align: center;
-    
-    }
-  .hero-svg img {
-    min-width: 90%;
-    max-width: 80%;
-    min-height: auto;
-    }
-  .btn-pastel-central {
-    position: static;
+
+  .nav-links.open{
+    display: flex !important;
+    flex-direction: column;
+    gap: .35rem;
+  }
+
+  /* Links más lindos */
+  .nav-links li{
+    margin: 0;
+  }
+
+  .nav-links a{
     display: block;
-    width: fit-content;
-    margin: 2rem auto 0;
-    transform: none;
-    }
+    width: 100%;
+
+    padding: .9rem 1rem;
+    border-radius: 12px;
+
+    text-decoration: none;
+    color: #1b263b;
+    font-weight: 700;
+    letter-spacing: .02rem;
+
+    transition: background-color .2s ease, transform .2s ease;
+  }
+
+  .nav-links a:hover{
+    background: rgba(47,88,110,0.10);
+    transform: translateX(2px);
+  }
+  .hero-v2{
+    padding: 0;
+    border-radius: 18px;
+    min-height: auto;
+  }
+
+  .hero-v2 .hero-central{
+    padding: 2.2rem 1.2rem 2.4rem;
+    gap: 1.1rem;
+  }
+
+  .hero-v2 .hero-texto h1{
+    font-size: clamp(1.95rem, 7vw, 2.35rem);
+    line-height: 1.08;
+  }
+
+  .hero-v2 a.btn-pastel-central,
+  .hero-v2 a.btn-pastel-central:visited{
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .hero-v2 .hero-svg img{
+    width: min(520px, 92vw);
+    opacity: 0.78;
+  }
+
 
     /*TARJETAS MAS CHICAS PARA EL RESPONSIVE*/
     .service-cards {

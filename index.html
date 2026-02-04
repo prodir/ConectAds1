@@ -204,9 +204,12 @@
 <section id="equipo">
   <div class="overlay"></div>
     <h2 class="equipo__titulo">Quiénes Somos</h2>
-    <p class="equipo__p">ConectAds es un equipo resolutivo y versátil. 
+    <p class="equipo__p" id="equipoIntro">ConectAds es un equipo resolutivo y versátil. 
     Nuestra misión es ayudar a las marcas a crecer y alcanzar sus objetivos mediante estrategias innovadoras y efectivas. Combinamos creatividad,últimas tecnologías y tendencias del mercado para optimizar la presencia online de nuestros clientes, potenciando sus resultados en el mundo digital.
   </p>
+  <button class="equipo__toggle" type="button" aria-expanded="false" aria-controls="equipoIntro">
+  Mostrar más
+</button>
   <h2 class="equipo__titulo1">Nuestro equipo</h2>
   <div class="equipo__miembros">
     <div class="miembro">
@@ -612,6 +615,21 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.textContent = 'Mostrar más +';
       }
     });
+  });
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const intro = document.getElementById("equipoIntro");
+  const btn = document.querySelector(".equipo__toggle");
+  if (!intro || !btn) return;
+
+  btn.addEventListener("click", () => {
+    const expanded = intro.classList.toggle("is-expanded");
+    btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    btn.textContent = expanded ? "Mostrar menos" : "Mostrar más";
   });
 });
 </script>
